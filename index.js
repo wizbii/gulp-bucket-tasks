@@ -1,6 +1,6 @@
 var argv = require('yargs').argv;
 var bucket = require('gulp-bucket');
-var scripts = require('./scripts');
+var scripts = require('./tasks/scripts');
 
 module.exports = function (config) {
   bucket
