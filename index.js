@@ -1,20 +1,10 @@
-var argv = require('yargs').argv;
-var bucket = require('gulp-bucket');
-var scripts = require('./tasks/scripts');
+module.exports = function (bucket) {
+  var argv =
+    require('yargs')
+      .alias('b', 'build')
+      .alias('l', 'lint')
+      .argv
+    ;
 
-module.exports = function (config) {
-  bucket
-    .options(argv)
-  ;
-
-  bucket
-    .factory('scripts', scripts)
-    .add(config.scripts)
-  ;
-
-  bucket
-    .main(
-      bucket.tasks('scripts')
-    )
-  ;
+  bucket.options(argv);
 };
