@@ -7,6 +7,7 @@
     "index.js",
     "package.json",
     "scripts.js",
+    "lint.js",
     "sequence.js"
   ],
   "dependencies": {
