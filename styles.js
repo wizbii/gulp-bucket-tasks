@@ -3,6 +3,8 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var revise = require('gulp-revise');
 var sourcemaps = require('gulp-sourcemaps');
+var gulpif = require('gulp-if');
+var sassVariables = require('gulp-sass-variables');
 
 module.exports = function (config, options) {
   return [
@@ -10,6 +12,9 @@ module.exports = function (config, options) {
       return gulp
         .src(config.src)
         .pipe(sourcemaps.init())
+        .pipe(gulpif(typeof process.env.ASSETS_BASE_URL === 'string', sassVariables({
+          '$base-path': process.env.ASSETS_BASE_URL
+        })))
         .pipe(sass({
           outputStyle: options.build
             ? 'compressed'
